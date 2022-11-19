@@ -1,0 +1,19 @@
+{
+  "@@last_modified": "2022-11-20T10:21:58.000000",
+  "home": "Home",
+  "settings": "Settings",
+  "ok": "OK",
+  "add": "Add",
+  "error": "Error",
+  "start": "Start",
+  "stop": "Stop",
+  "done": "Done",
+  "auto": "Auto",
+  "kContinue": "Continue",
+  "loading": "Loading",
+  "unknownErrorOccurred": "An unknown error occurred.",
+  "light": "Light",
+  "dark": "Dark",
+  "appearance": "Appearance",
+  "login": "Login"
+}

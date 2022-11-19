@@ -1,0 +1,19 @@
+{
+  "@@last_modified": "2022-11-20T10:21:58.000000",
+  "home": "Giriş",
+  "settings": "Ayarlar",
+  "ok": "Tamam",
+  "add": "Ekle",
+  "error": "Hata",
+  "start": "Başla",
+  "stop": "Durdur",
+  "done": "Tamamlandı",
+  "auto": "Otomatik",
+  "kContinue": "Devam et",
+  "loading": "Yükleniyor",
+  "unknownErrorOccurred": "Bilinmeyen bir hata oluştu.",
+  "light": "Aydınlık",
+  "dark": "Karanlık",
+  "appearance": "Görünüm",
+  "login": "Giriş yap"
+}
