@@ -1,4 +1,6 @@
-class AuthEndpoints {}
+class AuthEndpoints {
+  static const String createClientApp = '/apps';
+}
 
 class AuthOauthEndpoints {
   static const String authorize = '/oauth/authorize';

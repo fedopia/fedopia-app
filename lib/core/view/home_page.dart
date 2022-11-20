@@ -1,3 +1,4 @@
+import 'package:fedopia/core/constants/app_constants.dart';
 import 'package:fedopia/core/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -9,7 +10,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.kAppTitle),
+        title: const Text(kAppTitle),
       ),
       body: Column(
         children: [

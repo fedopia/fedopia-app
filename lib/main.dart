@@ -1,5 +1,4 @@
 import 'package:fedopia/core/routes.dart';
-import 'package:fedopia/features/auth/presentation/view/auth_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
