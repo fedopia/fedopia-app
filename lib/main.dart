@@ -1,3 +1,5 @@
+import 'package:fedopia/core/routes.dart';
+import 'package:fedopia/features/auth/presentation/view/auth_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -18,13 +20,8 @@ class FedopiaApp extends StatelessWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: const Locale('en'),
-      home: Builder(builder: (context) {
-        return Scaffold(
-          body: Center(
-            child: Text(AppLocalizations.of(context)!.home),
-          ),
-        );
-      }),
+      initialRoute: AppRoutePaths.home,
+      routes: fedopiaAppRoutes,
     );
   }
 }
