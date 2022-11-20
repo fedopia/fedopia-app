@@ -27,6 +27,8 @@ dependencies:
   flutter_bloc: ^8.1.1
   equatable: ^2.0.5
 
+  url_launcher: ^6.1.6
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

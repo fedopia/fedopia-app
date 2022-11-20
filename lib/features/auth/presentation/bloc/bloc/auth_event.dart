@@ -7,11 +7,13 @@ abstract class AuthEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class InstanceSelected extends AuthEvent {
-  final Instance instance;
+class AuthStarted extends AuthEvent {
+  const AuthStarted();
+}
 
-  const InstanceSelected(this.instance);
+class LoginPressed extends AuthEvent {
+  const LoginPressed();
 
   @override
-  List<Object> get props => [instance];
+  List<Object> get props => [];
 }

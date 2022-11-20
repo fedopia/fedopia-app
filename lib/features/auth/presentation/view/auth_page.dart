@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:fedopia/core/widgets/app_error.dart';
+import 'package:fedopia/core/widgets/centered_progress_bar.dart';
 import 'package:fedopia/features/auth/data/client/auth_client.dart';
 import 'package:fedopia/features/auth/data/repository/auth_repository.dart';
 import 'package:fedopia/features/auth/domain/model/instance.dart';
@@ -11,6 +13,7 @@ class AuthPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final instance = ModalRoute.of(context)!.settings.arguments as Instance;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Auth'),
@@ -18,7 +21,18 @@ class AuthPage extends StatelessWidget {
       body: BlocProvider(
         // TODO: Use a real client
         // TODO: Use a real repository
-        create: (context) => AuthBloc(AuthRepository(AuthClient(Dio()))),
+        create: (context) => AuthBloc(
+          authRepository: AuthRepository(AuthClient(
+            Dio(BaseOptions(
+              baseUrl: instance.apiUri.toString(),
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+              },
+            )),
+          )),
+          instance: instance,
+        )..add(const AuthStarted()),
         child: const AuthPageBody(),
       ),
     );
@@ -42,24 +56,14 @@ class AuthPageBody extends StatelessWidget {
   Widget _buildBody(BuildContext context, AuthState state) {
     if (state is AuthInitial) {
       return Column(
-        children: [
-          const Text('Select an instance'),
-          TextButton(
-            onPressed: () {
-              const instance = Instance(
-                name: 'mastodon.social',
-                domain: 'mastodon.social',
-              );
-              context.read<AuthBloc>().add(const InstanceSelected(instance));
-            },
-            child: const Text('Select'),
-          ),
+        children: const [
+          Text('Auth Initial'),
         ],
       );
-    } else if (state is AuthInstanceSelectSuccess) {
-      return Center(
-        child: Text('Selected instance: ${state.instance.name}'),
-      );
+    } else if (state is AuthInProgress) {
+      return const CenteredProgressIndicator();
+    } else if (state is AuthFailure) {
+      return AppError(state.message);
     } else {
       return const Center(
         child: Text('Unknown state'),

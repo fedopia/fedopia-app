@@ -1,4 +1,5 @@
-const String kAppTitle = 'Fedopia';
+const String kAppName = 'Fedopia';
+const String kAppTitle = '$kAppName';
 const String kAppWebsite = 'fedopia.app';
 const String kAppWebsiteUrl = 'https://$kAppWebsite';
-const String kAppAuthRedirectUrl = 'fedopia://auth';
+const String kAppAuthRedirectUri = 'fedopia://auth';

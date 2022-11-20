@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
           Text(AppLocalizations.of(context)!.home),
           TextButton(
             onPressed: () {
-              Navigator.of(context).pushNamed(AppRoutePaths.auth);
+              Navigator.of(context).pushNamed(AppRoutePaths.instancePicker);
             },
             child: Text(AppLocalizations.of(context)!.login),
           ),
