@@ -11,7 +11,7 @@ abstract class AuthApiClient {
   factory AuthApiClient(Dio dio, {String baseUrl}) = _AuthApiClient;
 
   /// Create a new client application.
-  @rf.POST(AuthEndpoints.createClientApp)
+  @rf.POST(AuthEndpoints.apps)
   Future<ClientAppEntity> createClientApp({
     @rf.Field('client_name') required String clientName,
     @rf.Field('redirect_uris') required String redirectUris,
@@ -20,7 +20,7 @@ abstract class AuthApiClient {
   });
 
   /// Verify user credentials
-  @rf.GET(AuthEndpoints.verifyCredentials)
+  @rf.GET(AuthEndpoints.accountsVerifyCredentials)
   Future<AccountEntity> verifyCredentials({
     @rf.Header('Authorization') required String authorization,
   });

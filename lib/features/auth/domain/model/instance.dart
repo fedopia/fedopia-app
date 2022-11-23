@@ -44,7 +44,7 @@ class Instance {
 
   // authorize uri from client app
   Uri getAuthorizeUriFromClientApp(ClientApp clientApp) => uriWithQuery(
-        AuthOauthEndpoints.authorize,
+        AuthEndpoints.oauthAuthorize,
         {
           'client_id': clientApp.clientId,
           'redirect_uri': clientApp.redirectUri,

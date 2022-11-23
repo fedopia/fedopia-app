@@ -11,7 +11,7 @@ abstract class AuthClient {
 
   /// Obtain access token
   /// https://docs.joinmastodon.org/methods/apps/oauth/
-  @rf.POST(AuthOauthEndpoints.token)
+  @rf.POST(AuthEndpoints.oauthToken)
   Future<TokenEntity> obtainAccessToken({
     @rf.Field('client_id') required String clientId,
     @rf.Field('client_secret') required String clientSecret,
