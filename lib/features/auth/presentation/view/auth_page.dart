@@ -6,7 +6,7 @@ import 'package:fedopia/features/auth/data/client/auth_client.dart';
 import 'package:fedopia/features/auth/data/repository/auth_repository.dart';
 import 'package:fedopia/features/auth/domain/model/instance.dart';
 import 'package:fedopia/features/auth/domain/usecase/auth_usecase.dart';
-import 'package:fedopia/features/auth/presentation/bloc/bloc/auth_bloc.dart';
+import 'package:fedopia/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
