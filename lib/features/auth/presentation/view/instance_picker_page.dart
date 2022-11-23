@@ -1,7 +1,6 @@
 import 'package:fedopia/core/data/router.dart';
 import 'package:fedopia/features/auth/domain/model/instance.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class InstancePickerPage extends StatelessWidget {
   const InstancePickerPage({super.key});
