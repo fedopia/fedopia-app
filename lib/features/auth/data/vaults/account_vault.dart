@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:fedopia/features/auth/data/constants/auth_constants.dart';
+import 'package:fedopia/features/auth/data/constants/auth_vault_constants.dart';
 import 'package:fedopia/features/auth/data/entities/account_entity.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -25,7 +25,7 @@ class AccountVault {
     try {
       final newKey = Hive.generateSecureKey();
       await secureStorage.write(
-        key: kAuthAccountVaultEncryptionKey,
+        key: AuthVaultConstants.accountVaultEncryptionKey,
         value: base64UrlEncode(newKey),
       );
     } catch (e) {
@@ -40,7 +40,7 @@ class AccountVault {
   static Future<Uint8List> getEncryptionKey() async {
     log("Getting vault key");
     final encryptionKeyFromSecureStorage = await secureStorage.read(
-      key: kAuthAccountVaultEncryptionKey,
+      key: AuthVaultConstants.accountVaultEncryptionKey,
     );
     if (encryptionKeyFromSecureStorage == null) {
       final created = await createEncryptionKey();
@@ -58,7 +58,7 @@ class AccountVault {
     await Hive.initFlutter();
     final encryptionKey = await getEncryptionKey();
     final vault = await Hive.openBox(
-      kAuthAccountVaultName,
+      AuthVaultConstants.accountVaultName,
       encryptionCipher: HiveAesCipher(encryptionKey),
     );
     return vault;
