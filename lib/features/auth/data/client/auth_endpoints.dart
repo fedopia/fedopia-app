@@ -1,5 +1,6 @@
 class AuthEndpoints {
   static const String createClientApp = '/apps';
+  static const String verifyCredentials = '/accounts/verify_credentials';
 }
 
 class AuthOauthEndpoints {

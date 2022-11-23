@@ -1,5 +1,8 @@
-const String kAppName = 'Fedopia';
-const String kAppTitle = '$kAppName';
-const String kAppWebsite = 'fedopia.app';
-const String kAppWebsiteUrl = 'https://$kAppWebsite';
-const String kAppAuthRedirectUri = 'fedopia://auth';
+class AppConstants {
+  AppConstants._();
+  static const String name = 'Fedopia';
+  static const String clientName = 'Fedopia';
+  static const String title = '$name – Federated Social Network';
+  static const String website = 'fedopia.app';
+  static const String websiteUrl = 'https://$website';
+}

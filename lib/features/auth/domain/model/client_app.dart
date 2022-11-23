@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'client_app_entity.g.dart';
+part 'client_app.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake, anyMap: true)
-class ClientAppEntity extends Equatable {
+@JsonSerializable(fieldRename: FieldRename.snake)
+class ClientApp extends Equatable {
   final String id;
   final String name;
   final String website;
@@ -13,7 +13,7 @@ class ClientAppEntity extends Equatable {
   final String clientSecret;
   final String vapidKey;
 
-  const ClientAppEntity({
+  const ClientApp({
     required this.id,
     required this.name,
     required this.website,
@@ -34,8 +34,8 @@ class ClientAppEntity extends Equatable {
         vapidKey,
       ];
 
-  factory ClientAppEntity.fromJson(Map<String, dynamic> json) =>
-      _$ClientAppEntityFromJson(json);
+  factory ClientApp.fromJson(Map<String, dynamic> json) =>
+      _$ClientAppFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ClientAppEntityToJson(this);
+  Map<String, dynamic> toJson() => _$ClientAppToJson(this);
 }

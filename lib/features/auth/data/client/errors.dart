@@ -1,6 +1,15 @@
-enum AuthFailure {
+enum AuthError {
   notFound,
   serverFailure,
   unknownFailure,
-  clientAppCreateFailure, // use more specific failures
+
+  launchBrowserFailure,
+
+  clientAppCreateFailure,
+  clientAppNotFound,
+
+  obtainAccessTokenFailure,
+  verifyAccessTokenFailure,
+
+  verifyCredentialsFailure,
 }

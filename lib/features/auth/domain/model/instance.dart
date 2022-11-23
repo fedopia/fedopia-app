@@ -1,8 +1,12 @@
 import 'package:fedopia/features/auth/data/client/auth_endpoints.dart';
-import 'package:fedopia/features/auth/domain/constants/auth_response_constants.dart';
-import 'package:fedopia/features/auth/domain/constants/auth_scopes_constants.dart';
-import 'package:fedopia/features/auth/data/entities/client_app_entity.dart';
+import 'package:fedopia/features/auth/data/constants/auth_response_constants.dart';
+import 'package:fedopia/features/auth/data/constants/auth_scope_constants.dart';
+import 'package:fedopia/features/auth/domain/model/client_app.dart';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'instance.g.dart';
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class Instance {
   final String name;
   final String host;
@@ -39,13 +43,25 @@ class Instance {
       apiUriWithPath(path).replace(queryParameters: query);
 
   // authorize uri from client app
-  Uri authorizeUriFromClientApp(ClientAppEntity clientApp) => uriWithQuery(
+  Uri getAuthorizeUriFromClientApp(ClientApp clientApp) => uriWithQuery(
         AuthOauthEndpoints.authorize,
         {
           'client_id': clientApp.clientId,
           'redirect_uri': clientApp.redirectUri,
-          'scope': kAuthScopesAll,
+          'scope': AuthScopeConstants.all,
           'response_type': kAuthResponseTypeCode,
+          'force_login': 'true',
         },
       );
+
+  // from host
+  static Instance fromHost(String host) => Instance(
+        name: host,
+        host: host,
+      );
+
+  factory Instance.fromJson(Map<String, dynamic> json) =>
+      _$InstanceFromJson(json);
+
+  Map<String, dynamic> toJson() => _$InstanceToJson(this);
 }

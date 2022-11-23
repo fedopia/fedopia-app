@@ -1,6 +1,7 @@
-import 'package:fedopia/core/routes.dart';
+import 'package:fedopia/core/data/router.dart';
 import 'package:fedopia/features/auth/domain/model/instance.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class InstancePickerPage extends StatelessWidget {
   const InstancePickerPage({super.key});
@@ -22,9 +23,8 @@ class InstancePickerPage extends StatelessWidget {
             (instance) => TextButton(
               child: Text(instance.name),
               onPressed: () {
-                Navigator.of(context).pushNamed(
-                  AppRoutePaths.auth,
-                  arguments: instance,
+                FedopiaRouter.router.go(
+                  FedopiaRouter.auth(instance.host),
                 );
               },
             ),
