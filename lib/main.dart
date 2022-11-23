@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:app_links/app_links.dart';
 import 'package:bloc/bloc.dart';
-import 'package:fedopia/core/constants/app_constants.dart';
+import 'package:fedopia/core/data/constants/app_constants.dart';
 import 'package:fedopia/core/data/router.dart';
 import 'package:fedopia/core/model/simple_bloc_observer.dart';
 import 'package:flutter/material.dart';

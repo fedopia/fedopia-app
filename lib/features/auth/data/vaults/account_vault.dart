@@ -69,14 +69,14 @@ class AccountVault {
   static Future<AccountEntity?> addAccount(AccountEntity account) async {
     final vault = await openVault();
 
-    if (vault.containsKey(account.id)) {
+    if (vault.containsKey(account.acct)) {
       // Account already exists
       // maybe throw an error?
       return null;
     }
 
-    await vault.put(account.id, account.toJson());
-    return AccountEntity.fromJson(vault.get(account.id));
+    await vault.put(account.acct, account.toJson());
+    return AccountEntity.fromJson(vault.get(account.acct));
   }
 
   /// Get [AccountEntity]

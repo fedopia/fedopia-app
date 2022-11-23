@@ -1,4 +1,4 @@
-import 'package:fedopia/core/constants/app_constants.dart';
+import 'package:fedopia/core/data/constants/app_constants.dart';
 import 'package:fedopia/features/auth/data/client/auth_api_client.dart';
 import 'package:fedopia/features/auth/data/constants/auth_scope_constants.dart';
 import 'package:fedopia/features/auth/data/client/auth_client.dart';

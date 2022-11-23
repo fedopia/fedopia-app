@@ -1,5 +1,4 @@
-class AppConstants {
-  AppConstants._();
+abstract class AppConstants {
   static const String name = 'Fedopia';
   static const String clientName = 'Fedopia';
   static const String title = '$name – Federated Social Network';

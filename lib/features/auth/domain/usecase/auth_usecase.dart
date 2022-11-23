@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:fedopia/core/constants/app_constants.dart';
+import 'package:fedopia/core/data/constants/app_constants.dart';
 import 'package:fedopia/features/auth/data/client/errors.dart';
 import 'package:fedopia/features/auth/data/constants/auth_client_constants.dart';
 import 'package:fedopia/features/auth/data/constants/auth_scope_constants.dart';
