@@ -14,7 +14,7 @@ import 'package:fedopia/features/auth/domain/model/instance.dart';
 import 'package:fedopia/features/auth/domain/translator/account_translator.dart';
 import 'package:fedopia/features/auth/domain/translator/client_app_translator.dart';
 import 'package:fedopia/features/auth/domain/translator/instance_translator.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
 
 class AuthUseCase {
   final IAuthRepository _authRepository;
@@ -53,10 +53,7 @@ class AuthUseCase {
 
     final clientApp = ClientAppTranslator.toModel(clientAppEntity);
     final url = instance.getAuthorizeUriFromClientApp(clientApp);
-    if (!await launchUrl(url)) {
-      return const Left(AuthError.launchBrowserFailure);
-    }
-
+    await launch(url.toString());
     return const Right(null);
   }
 

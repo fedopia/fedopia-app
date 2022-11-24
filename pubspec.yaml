@@ -28,7 +28,6 @@ dependencies:
   flutter_bloc: ^8.1.1
   equatable: ^2.0.5
 
-  url_launcher: ^6.1.6
   go_router: ^5.1.10
   app_links: ^3.3.0
 
@@ -36,6 +35,8 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   shared_preferences: ^2.0.15
+
+  flutter_custom_tabs: ^1.0.4
 
 dev_dependencies:
   flutter_test:

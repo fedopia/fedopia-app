@@ -7,7 +7,6 @@ import 'package:fedopia/core/data/router.dart';
 import 'package:fedopia/core/model/simple_bloc_observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 void main() async {
   runApp(const FedopiaApp());
@@ -31,7 +30,6 @@ void main() async {
 void _onNewAuthLink(Uri uri) {
   log('New auth request received: ${uri.toString()}');
   FedopiaRouter.router.replace(uri.path);
-  closeInAppWebView();
 }
 
 class FedopiaApp extends StatelessWidget {
