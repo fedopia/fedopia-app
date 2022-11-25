@@ -1,16 +1,22 @@
 part of 'account_picker_cubit.dart';
 
 abstract class AccountPickerState extends Equatable {
-  final List<Account> accounts;
-  final String? selectedAccount;
-
-  const AccountPickerState(this.accounts, this.selectedAccount);
+  const AccountPickerState();
 
   @override
-  List<Object?> get props => [accounts, selectedAccount];
+  List<Object?> get props => [];
 }
 
-class AccountPickerInitial extends AccountPickerState {
-  const AccountPickerInitial(List<Account> accounts, String? selectedAccount)
-      : super(accounts, selectedAccount);
+class AccountPickerInProgress extends AccountPickerState {}
+
+class AccountPickerSuccess extends AccountPickerState {
+  final Iterable<Account> accounts;
+  final String? defaultAccountIdentifier;
+
+  const AccountPickerSuccess(this.accounts, this.defaultAccountIdentifier);
+
+  @override
+  List<Object?> get props => [accounts, defaultAccountIdentifier];
 }
+
+class AccountPickerEmpty extends AccountPickerState {}

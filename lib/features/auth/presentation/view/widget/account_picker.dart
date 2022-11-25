@@ -8,25 +8,32 @@ class AccountPicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AccountPickerCubit()..getAccounts(),
-      child: _buildAccountPicker(),
-    );
+    return _buildAccountPicker();
   }
 
   Widget _buildAccountPicker() {
     return BlocBuilder<AccountPickerCubit, AccountPickerState>(
       builder: (context, state) {
-        return Column(
-          children: [
-            ...state.accounts.map((account) {
-              return AccountTile(
-                account: account,
-                selected: account.acct == state.selectedAccount,
-              );
-            }).toList(),
-          ],
-        );
+        if (state is AccountPickerInProgress) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (state is AccountPickerSuccess) {
+          return Column(
+            children: [
+              ...state.accounts.map((account) {
+                return AccountTile(
+                  account: account,
+                  selected: account.acct == state.defaultAccountIdentifier,
+                );
+              }).toList(),
+            ],
+          );
+        } else if (state is AccountPickerEmpty) {
+          return const Text('No accounts');
+        }
+
+        return const SizedBox.shrink();
       },
     );
   }

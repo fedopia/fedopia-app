@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fedopia/features/auth/domain/model/account.dart';
 import 'package:fedopia/features/auth/presentation/cubit/account_picker_cubit.dart';
 import 'package:flutter/material.dart';
@@ -22,14 +23,18 @@ class AccountTile extends StatelessWidget {
           subtitle: Text(DateTime.fromMillisecondsSinceEpoch(
             (account.token?.createdAt ?? 0) * 1000,
           ).toString()),
-          leading: CircleAvatar(
-            backgroundImage: NetworkImage(account.avatar),
+          leading: CachedNetworkImage(
+            imageUrl: account.avatar,
+            placeholder: (context, url) => const CircularProgressIndicator(),
+            imageBuilder: (context, imageProvider) {
+              return CircleAvatar(backgroundImage: imageProvider);
+            },
           ),
           trailing: selected
               ? const Icon(Icons.check_circle, color: Colors.green)
               : null,
           onTap: () {
-            context.read<AccountPickerCubit>().selectAccount(account.acct);
+            context.read<AccountPickerCubit>().setDefaultAccount(account.acct);
           },
         );
       },

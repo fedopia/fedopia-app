@@ -7,7 +7,7 @@ abstract class FedopiaSharedPreferences {
   }
 
   // get default account
-  static Future<String?> getDefaultAccount() async {
+  static Future<String?> getDefaultAccountIdentifier() async {
     return BaseSharedPreferences.getString('default_account');
   }
 }
