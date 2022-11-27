@@ -1,5 +1,5 @@
 import 'package:fedopia/core/view/home_page.dart';
-import 'package:fedopia/features/auth/presentation/cubit/account_picker_cubit.dart';
+import 'package:fedopia/features/auth/presentation/cubit/account_manager_cubit.dart';
 import 'package:fedopia/features/auth/presentation/view/auth_page.dart';
 import 'package:fedopia/features/auth/presentation/view/instance_picker_page.dart';
 import 'package:flutter/foundation.dart';
@@ -38,8 +38,8 @@ class FedopiaRouter {
       GoRoute(path: auth(), builder: _authPageBuilder),
     ],
     redirect: (context, state) {
-      final state = context.read<AccountPickerCubit>().state;
-      if (state is AccountPickerEmpty) {
+      final state = context.read<AccountManagerCubit>().state;
+      if (state is AccountManagerEmpty) {
         return instancePicker;
       }
       return null;

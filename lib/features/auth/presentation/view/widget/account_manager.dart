@@ -1,24 +1,24 @@
-import 'package:fedopia/features/auth/presentation/cubit/account_picker_cubit.dart';
+import 'package:fedopia/features/auth/presentation/cubit/account_manager_cubit.dart';
 import 'package:fedopia/features/auth/presentation/view/widget/account_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AccountPicker extends StatelessWidget {
-  const AccountPicker({super.key});
+class AccountManager extends StatelessWidget {
+  const AccountManager({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return _buildAccountPicker();
+    return _buildAccountManager();
   }
 
-  Widget _buildAccountPicker() {
-    return BlocBuilder<AccountPickerCubit, AccountPickerState>(
+  Widget _buildAccountManager() {
+    return BlocBuilder<AccountManagerCubit, AccountManagerState>(
       builder: (context, state) {
-        if (state is AccountPickerInProgress) {
+        if (state is AccountManagerInProgress) {
           return const Center(
             child: CircularProgressIndicator(),
           );
-        } else if (state is AccountPickerSuccess) {
+        } else if (state is AccountManagerSuccess) {
           return Column(
             children: [
               ...state.accounts.map((account) {
@@ -29,7 +29,7 @@ class AccountPicker extends StatelessWidget {
               }).toList(),
             ],
           );
-        } else if (state is AccountPickerEmpty) {
+        } else if (state is AccountManagerEmpty) {
           return const Text('No accounts');
         }
 

@@ -5,7 +5,7 @@ import 'package:fedopia/core/data/constants/app_constants.dart';
 import 'package:fedopia/core/data/router.dart';
 import 'package:fedopia/core/model/simple_bloc_observer.dart';
 import 'package:fedopia/core/view/app_loading_page.dart';
-import 'package:fedopia/features/auth/presentation/cubit/account_picker_cubit.dart';
+import 'package:fedopia/features/auth/presentation/cubit/account_manager_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -49,19 +49,19 @@ class FedopiaApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<AccountPickerCubit>(
-          create: (context) => AccountPickerCubit()..getAccounts(),
+        BlocProvider<AccountManagerCubit>(
+          create: (context) => AccountManagerCubit()..getAccounts(),
         ),
         // settings bloc
       ],
       child: MaterialApp.router(
         builder: (context, child) {
-          final state = context.watch<AccountPickerCubit>().state;
+          final state = context.watch<AccountManagerCubit>().state;
           return MediaQuery(
             data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
             child: AnimatedSwitcher(
               duration: AppConstants.animationDuration,
-              child: state is AccountPickerInProgress
+              child: state is AccountManagerInProgress
                   ? const AppLoadingPage()
                   : child,
             ),

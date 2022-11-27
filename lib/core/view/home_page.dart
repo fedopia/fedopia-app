@@ -1,6 +1,6 @@
 import 'package:fedopia/core/data/constants/app_constants.dart';
 import 'package:fedopia/core/data/router.dart';
-import 'package:fedopia/features/auth/presentation/view/widget/account_picker.dart';
+import 'package:fedopia/features/auth/presentation/view/widget/account_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
             },
             child: Text(AppLocalizations.of(context)!.login),
           ),
-          const AccountPicker(),
+          const AccountManager(),
         ],
       ),
     );

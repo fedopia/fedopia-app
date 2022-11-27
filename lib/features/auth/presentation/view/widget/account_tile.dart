@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fedopia/features/auth/domain/model/account.dart';
-import 'package:fedopia/features/auth/presentation/cubit/account_picker_cubit.dart';
+import 'package:fedopia/features/auth/presentation/cubit/account_manager_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,7 +16,7 @@ class AccountTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AccountPickerCubit, AccountPickerState>(
+    return BlocBuilder<AccountManagerCubit, AccountManagerState>(
       builder: (context, state) {
         return ListTile(
           title: Text(account.acct),
@@ -34,7 +34,7 @@ class AccountTile extends StatelessWidget {
               ? const Icon(Icons.check_circle, color: Colors.green)
               : null,
           onTap: () {
-            context.read<AccountPickerCubit>().setDefaultAccount(account.acct);
+            context.read<AccountManagerCubit>().setDefaultAccount(account.acct);
           },
         );
       },

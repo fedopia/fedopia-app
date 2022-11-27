@@ -6,14 +6,14 @@ import 'package:fedopia/features/auth/domain/model/account.dart';
 import 'package:fedopia/features/auth/domain/translator/account_translator.dart';
 import 'package:flutter/foundation.dart';
 
-part 'account_picker_state.dart';
+part 'account_manager_state.dart';
 
-class AccountPickerCubit extends Cubit<AccountPickerState> {
-  AccountPickerCubit() : super(AccountPickerInProgress());
+class AccountManagerCubit extends Cubit<AccountManagerState> {
+  AccountManagerCubit() : super(AccountManagerInProgress());
 
   // get accounts
   Future<void> getAccounts() async {
-    emit(AccountPickerInProgress());
+    emit(AccountManagerInProgress());
     if (kDebugMode) await Future.delayed(const Duration(seconds: 1));
 
     final defaultAccountIdentifier =
@@ -24,17 +24,17 @@ class AccountPickerCubit extends Cubit<AccountPickerState> {
         .toList();
 
     if (accounts.isEmpty) {
-      emit(AccountPickerEmpty());
+      emit(AccountManagerEmpty());
     } else {
-      emit(AccountPickerSuccess(accounts, defaultAccountIdentifier));
+      emit(AccountManagerSuccess(accounts, defaultAccountIdentifier));
     }
   }
 
   void setDefaultAccount(String identifier) async {
     final result = await FedopiaSharedPreferences.setDefaultAccount(identifier);
-    if (result && state is AccountPickerSuccess) {
-      emit(AccountPickerSuccess(
-        (state as AccountPickerSuccess).accounts,
+    if (result && state is AccountManagerSuccess) {
+      emit(AccountManagerSuccess(
+        (state as AccountManagerSuccess).accounts,
         identifier,
       ));
     }
