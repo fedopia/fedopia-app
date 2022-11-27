@@ -1,7 +1,10 @@
 import 'package:fedopia/core/view/home_page.dart';
+import 'package:fedopia/features/auth/presentation/cubit/account_picker_cubit.dart';
 import 'package:fedopia/features/auth/presentation/view/auth_page.dart';
 import 'package:fedopia/features/auth/presentation/view/instance_picker_page.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class FedopiaRouter {
@@ -28,13 +31,19 @@ class FedopiaRouter {
 
   static GoRouter get router => _router;
   static final GoRouter _router = GoRouter(
+    initialLocation: home,
     routes: <GoRoute>[
       GoRoute(path: home, builder: _homePageBuilder),
       GoRoute(path: instancePicker, builder: _instancePickerPageBuilder),
-      GoRoute(
-        path: auth(),
-        builder: _authPageBuilder,
-      ),
+      GoRoute(path: auth(), builder: _authPageBuilder),
     ],
+    redirect: (context, state) {
+      final state = context.read<AccountPickerCubit>().state;
+      if (state is AccountPickerEmpty) {
+        return instancePicker;
+      }
+      return null;
+    },
+    debugLogDiagnostics: kDebugMode,
   );
 }

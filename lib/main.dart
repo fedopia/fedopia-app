@@ -1,17 +1,15 @@
 import 'dart:developer';
 
 import 'package:app_links/app_links.dart';
-import 'package:bloc/bloc.dart';
 import 'package:fedopia/core/data/constants/app_constants.dart';
 import 'package:fedopia/core/data/router.dart';
 import 'package:fedopia/core/model/simple_bloc_observer.dart';
 import 'package:fedopia/core/view/app_loading_page.dart';
-import 'package:fedopia/core/view/home_page.dart';
 import 'package:fedopia/features/auth/presentation/cubit/account_picker_cubit.dart';
-import 'package:fedopia/features/auth/presentation/view/instance_picker_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 Future<void> fedopiaAppRunner() async {
   Bloc.observer = SimpleBlocObserver();
@@ -41,6 +39,7 @@ void main() async {
 void _onNewAuthLink(Uri uri) {
   log('New auth request received: ${uri.toString()}');
   FedopiaRouter.router.replace(uri.path);
+  closeInAppWebView();
 }
 
 class FedopiaApp extends StatelessWidget {
@@ -61,12 +60,10 @@ class FedopiaApp extends StatelessWidget {
           return MediaQuery(
             data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
             child: AnimatedSwitcher(
-              duration: const Duration(seconds: 1),
+              duration: AppConstants.animationDuration,
               child: state is AccountPickerInProgress
                   ? const AppLoadingPage()
-                  : state is AccountPickerEmpty
-                      ? const InstancePickerPage()
-                      : child ?? const HomePage(),
+                  : child,
             ),
           );
         },

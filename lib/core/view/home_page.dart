@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
         children: [
           TextButton(
             onPressed: () {
-              FedopiaRouter.router.go(FedopiaRouter.instancePicker);
+              FedopiaRouter.router.push(FedopiaRouter.instancePicker);
             },
             child: Text(AppLocalizations.of(context)!.login),
           ),

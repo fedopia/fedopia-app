@@ -20,6 +20,7 @@ dependencies:
 
   dio: ^4.0.6
   cached_network_image: ^3.2.2
+  url_launcher: ^6.1.7
 
   pretty_dio_logger: ^1.1.1
   retrofit: ^3.3.1

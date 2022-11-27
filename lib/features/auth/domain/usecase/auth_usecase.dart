@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
@@ -14,7 +15,8 @@ import 'package:fedopia/features/auth/domain/model/instance.dart';
 import 'package:fedopia/features/auth/domain/translator/account_translator.dart';
 import 'package:fedopia/features/auth/domain/translator/client_app_translator.dart';
 import 'package:fedopia/features/auth/domain/translator/instance_translator.dart';
-import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
+import 'package:flutter_custom_tabs/flutter_custom_tabs.dart' as custom_tabs;
+import 'package:url_launcher/url_launcher.dart' as url_launcher;
 
 class AuthUseCase {
   final IAuthRepository _authRepository;
@@ -52,8 +54,15 @@ class AuthUseCase {
     }
 
     final clientApp = ClientAppTranslator.toModel(clientAppEntity);
-    final url = instance.getAuthorizeUriFromClientApp(clientApp);
-    await launch(url.toString());
+    final uri = instance.getAuthorizeUriFromClientApp(clientApp);
+    if (Platform.isIOS) {
+      // on ios, we need to call CloseInAppBrowser to close the browser
+      // and only url_launcher can do that. iOS already provides in app browser
+      // like custom tabs on Android.
+      await url_launcher.launchUrl(uri);
+    } else {
+      await custom_tabs.launch(uri.toString());
+    }
     return const Right(null);
   }
 

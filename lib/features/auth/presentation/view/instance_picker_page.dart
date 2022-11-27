@@ -22,7 +22,7 @@ class InstancePickerPage extends StatelessWidget {
             (instance) => TextButton(
               child: Text(instance.name),
               onPressed: () {
-                FedopiaRouter.router.go(
+                FedopiaRouter.router.push(
                   FedopiaRouter.auth(instance.host),
                 );
               },
