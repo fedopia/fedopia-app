@@ -38,8 +38,9 @@ class FedopiaRouter {
       GoRoute(path: auth(), builder: _authPageBuilder),
     ],
     redirect: (context, state) {
-      final state = context.read<AccountManagerCubit>().state;
-      if (state is AccountManagerEmpty) {
+      final accountManagerState = context.read<AccountManagerCubit>().state;
+      if (state.path != instancePicker &&
+          accountManagerState is AccountManagerEmpty) {
         return instancePicker;
       }
       return null;
