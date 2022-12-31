@@ -4,9 +4,9 @@ Fediverse's next generation social media app
 
 ## Roadmap
 
-- [ ] Instance list
+- [x] Instance list
 - [ ] Public timeline
-- [ ] Login
+- [x] Login
 - [ ] Local timeline
 - [ ] Conversations view
 - [ ] DMs
