@@ -1,19 +1,26 @@
 import 'package:fedopia/features/auth/data/client/auth_endpoints.dart';
 import 'package:fedopia/features/auth/data/constants/auth_response_constants.dart';
 import 'package:fedopia/features/auth/data/constants/auth_scope_constants.dart';
-import 'package:fedopia/features/auth/domain/model/client_app.dart';
+import 'package:fedopia/features/auth/data/entities/instance_type_entity.dart';
+import 'package:fedopia/features/auth/domain/domain.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'instance.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class Instance {
   final String name;
   final String host;
+  final String? description;
+  final InstanceTypeEntity type;
+  final int? userCount;
 
   const Instance({
     required this.name,
     required this.host,
+    this.description,
+    required this.type,
+    this.userCount,
   });
 
   @override
@@ -22,7 +29,10 @@ class Instance {
       other is Instance &&
           runtimeType == other.runtimeType &&
           name == other.name &&
-          host == other.host;
+          host == other.host &&
+          description == other.description &&
+          type == other.type &&
+          userCount == other.userCount;
 
   @override
   int get hashCode => name.hashCode ^ host.hashCode;
@@ -58,6 +68,7 @@ class Instance {
   static Instance fromHost(String host) => Instance(
         name: host,
         host: host,
+        type: InstanceTypeEntity.unknown,
       );
 
   factory Instance.fromJson(Map<String, dynamic> json) =>

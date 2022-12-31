@@ -39,7 +39,7 @@ class FedopiaRouter {
     ],
     redirect: (context, state) {
       final accountManagerState = context.read<AccountManagerCubit>().state;
-      if (state.path != instancePicker &&
+      if (state.path?.startsWith(instancePicker) == true &&
           accountManagerState is AccountManagerEmpty) {
         return instancePicker;
       }

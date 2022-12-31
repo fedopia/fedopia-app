@@ -1,16 +1,29 @@
+import 'package:fedopia/features/auth/data/entities/instance_type_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'instance_entity.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable()
 class InstanceEntity {
   final String name;
+  @JsonKey(readValue: _readHost)
   final String host;
+  final String? description;
+  final InstanceTypeEntity type;
+  final int? userCount;
 
   const InstanceEntity({
     required this.name,
     required this.host,
+    this.description,
+    required this.type,
+    this.userCount,
   });
+
+  // readHost
+  static _readHost(Map data, String host) {
+    return data["name"];
+  }
 
   @override
   bool operator ==(Object other) =>
@@ -18,7 +31,10 @@ class InstanceEntity {
       other is InstanceEntity &&
           runtimeType == other.runtimeType &&
           name == other.name &&
-          host == other.host;
+          host == other.host &&
+          description == other.description &&
+          type == other.type &&
+          userCount == other.userCount;
 
   @override
   int get hashCode => name.hashCode ^ host.hashCode;

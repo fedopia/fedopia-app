@@ -1,8 +1,5 @@
 import 'package:fedopia/features/auth/data/entities/account_entity.dart';
-import 'package:fedopia/features/auth/domain/model/account.dart';
-import 'package:fedopia/features/auth/domain/translator/client_app_translator.dart';
-import 'package:fedopia/features/auth/domain/translator/instance_translator.dart';
-import 'package:fedopia/features/auth/domain/translator/token_translator.dart';
+import 'package:fedopia/features/auth/domain/domain.dart';
 
 class AccountTranslator {
   AccountTranslator._();

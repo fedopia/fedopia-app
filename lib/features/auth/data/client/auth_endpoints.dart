@@ -1,4 +1,4 @@
-class AuthEndpoints {
+abstract class AuthEndpoints {
   // /api/v1/
   static const String apps = '/apps';
   static const String accountsVerifyCredentials =

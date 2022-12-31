@@ -1,8 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:fedopia/core/data/router.dart';
-import 'package:fedopia/features/auth/domain/model/instance.dart';
-import 'package:fedopia/features/auth/domain/usecase/auth_usecase.dart';
+import 'package:fedopia/features/auth/domain/domain.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';

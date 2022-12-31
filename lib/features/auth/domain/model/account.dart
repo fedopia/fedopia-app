@@ -1,7 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:fedopia/features/auth/domain/model/client_app.dart';
-import 'package:fedopia/features/auth/domain/model/instance.dart';
-import 'package:fedopia/features/auth/domain/model/token.dart';
+import 'package:fedopia/features/auth/domain/domain.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'account.g.dart';

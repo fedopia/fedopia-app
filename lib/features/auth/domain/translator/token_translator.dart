@@ -1,5 +1,5 @@
 import 'package:fedopia/features/auth/data/entities/token_entity.dart';
-import 'package:fedopia/features/auth/domain/model/token.dart';
+import 'package:fedopia/features/auth/domain/domain.dart';
 
 class TokenTranslator {
   TokenTranslator._();

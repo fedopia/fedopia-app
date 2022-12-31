@@ -1,5 +1,5 @@
 import 'package:fedopia/features/auth/data/entities/client_app_entity.dart';
-import 'package:fedopia/features/auth/domain/model/client_app.dart';
+import 'package:fedopia/features/auth/domain/domain.dart';
 
 class ClientAppTranslator {
   ClientAppTranslator._();

@@ -1,0 +1,4 @@
+enum InstancesError {
+  unknownError,
+  searchFailure,
+}

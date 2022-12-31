@@ -2,8 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:fedopia/core/data/shared_prefs/fedopia_shared_prefs.dart';
 import 'package:fedopia/features/auth/data/vaults/account_vault.dart';
-import 'package:fedopia/features/auth/domain/model/account.dart';
-import 'package:fedopia/features/auth/domain/translator/account_translator.dart';
+import 'package:fedopia/features/auth/domain/domain.dart';
 import 'package:flutter/foundation.dart';
 
 part 'account_manager_state.dart';
